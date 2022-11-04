@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  - let results = [{'variety': "Mango","vitamin":"c","price":11},{'variety': "Apple","vitamin":"B-6","price":5},{'variety': "Grape","vitamin":"K","price":10}]
+  div(claass="container-fluid")
+   div(class="row")
+    each item,index in results
+     div(class="col-sm-2",onClick=`buy(${index})`) Variety : #{item["variety"]} <br> Vitamin : #{item["vitamin"]} <br> Price : #{item["price"]}
+     script.
+        function buy(value) {
+            alert(`You purchased item ${value}`)
+        }
