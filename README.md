@@ -1,7 +1,2 @@
-# f2wb80aluri
-dynamically generate web pages on the server side.
-https://f2wb80aluri.onrender.com
+# f2wd80aluri
 
-Class : Juice
-
-Attributes/types : Variety(string), Vitamin(string), Price(number)
