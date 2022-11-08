@@ -1,7 +1,7 @@
-// const costume = require('../models/costume');
+// const juice = require('../models/juice');
 var Juice = require('../models/juice');
 
-// List of all Costumes
+// List of all Juices
 exports.juice_list = async function (req, res) {
     try {
         theJuices = await Juice.find();
@@ -16,10 +16,9 @@ exports.juice_list = async function (req, res) {
 // VIEWS
 // Handle a show all view
 exports.juice_view_all_Page = async function (req, res) {
-    console.log('check')
-    try {
+        try {
         theJuices = await Juice.find();
-        res.render('juices', { title: 'Juice Search Results', results: theCostumes });
+        res.render('juice', { title: 'Juice Search Results', rel: theJuices });
     }
     catch (err) {
         res.status(500);
