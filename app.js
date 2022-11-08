@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var Costume = require('./models/costume');
+var Juice = require('./models/juice');
 
 require('dotenv').config();
 const connectionString = process.env.MONGO_CON
@@ -20,6 +20,7 @@ var juiceRouter = require('./routes/juice');
 var gridbuildRouter = require('./routes/gridbuild');
 var selectorRouter = require('./routes/selector');
 var resourceRouter = require('./routes/resource');
+
 
 var app = express();
 
@@ -40,8 +41,8 @@ app.use('/users', usersRouter);
 app.use('/juice', juiceRouter);
 app.use('/gridbuild', gridbuildRouter);
 app.use('/selector', selectorRouter);
-//app.use('/models/costume',Costume);
 app.use('/resource', resourceRouter);
+app.use('/juices', juiceRouter);
 
 
 // catch 404 and forward to error handler
@@ -64,21 +65,18 @@ app.use(function (err, req, res, next) {
 
 async function recreateDB() {
   // Delete everything
-  await Costume.deleteMany();
+  await Juice.deleteMany();
   let instance1 = new
-    Costume({
-      costume_type: "ghost", size: 'large',
-      cost: 25.4
+    Juice({
+      variety: "Mango",vitamin:"c",price:11
     });
   let instance2 = new
-    Costume({
-      costume_type: "spider man", size: 'Medium',
-      cost: 125
+    Juice({
+      variety: "Apple",vitamin:"B-6",price:5
     });
   let instance3 = new
-    Costume({
-      costume_type: "batman", size: 'small',
-      cost: 155
+    Juice({
+      variety: "Grape",vitamin:"K",price:10
     });
 
   instance1.save(function (err, doc) {

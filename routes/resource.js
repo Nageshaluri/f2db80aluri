@@ -1,49 +1,27 @@
 var express = require('express');
 var router = express.Router();
 
-var Costume = require('../models/costume');
+var Juice = require('../models/juice');
 
 // Require controller modules.
 var api_controller = require('../controllers/api');
-// var costume_controller = require('../controllers/costume');
+// var juice_controller = require('../controllers/juice');
 
-var costume_controller = require('../controllers/costume');
+var juice_controller = require('../controllers/juice');
 
 /// API ROUTE ///
 // GET resources base.
 router.get('/', api_controller.api);
-/// COSTUME ROUTES ///
-// POST request for creating a Costume.
-router.post('/costumes', costume_controller.costume_create_post);
-// DELETE request to delete Costume.
-router.delete('/costumes/:id', costume_controller.costume_delete);
-// PUT request to update Costume.
-router.put('/costumes/:id', costume_controller.costume_update_put);
-// GET request for one Costume.
-router.get('/costumes/:id', costume_controller.costume_detail);
-// GET request for list of all Costume items.
-router.get('/costumes', costume_controller.costume_list);
-
-// router.get('/costumes', async (req, res) => {
-//     try{
-//         const data = await Costume.find();
-//         res.json(data)
-//     }
-//     catch(error){
-//         res.status(500).json({message: error.message})
-//     }
-// })
-
-
-
-
-
-
-
-
-
-
-
-
-
+/// JUICE ROUTES ///
+// POST request for creating a Juice.
+router.post('/juices', juice_controller.juice_create_post);
+// DELETE request to delete Juice.
+router.delete('/juices/:id', juice_controller.juice_delete);
+// PUT request to update Juice.
+router.put('/juices/:id', juice_controller.juice_update_put);
+// GET request for one Juice.
+router.get('/juices/:id', juice_controller.juice_detail);
+// GET request for list of all Juice items.
+router.get('/juices', juice_controller.juice_list);
+// router.get('/', juice_controlers.juice_view_all_Page );
 module.exports = router;
