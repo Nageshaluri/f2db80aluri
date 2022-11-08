@@ -2,12 +2,12 @@ extends layout
 
 block content
   h1= title
-  let results = [#{rel}]
-  //- div(claass="container-fluid")
-  //-  div(class="row")
-  //-   each item,index in results
-  //-    div(class="col-sm-2",onClick=`buy(${index})`) Variety : #{item["variety"]} <br> Vitamin : #{item["vitamin"]} <br> Price : #{item["price"]}
-  //-    script.
-  //-       function buy(value) {
-  //-           alert(`You purchased item ${value}`)
-  //-       }
+  - let juices = results
+  div(claass="container-fluid")
+   div(class="row")
+    each item,index in juices
+     div(class="col-sm-2",onClick=`buy(${index})`) Variety : #{item["variety"]} <br> Vitamin : #{item["vitamin"]} <br> Price : #{item["price"]}
+     script.
+        function buy(value) {
+            alert(`You purchased item ${value}`)
+        }

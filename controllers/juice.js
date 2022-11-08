@@ -18,7 +18,7 @@ exports.juice_list = async function (req, res) {
 exports.juice_view_all_Page = async function (req, res) {
         try {
         theJuices = await Juice.find();
-        res.render('juice', { title: 'Juice Search Results', rel: theJuices });
+        res.render('juice', { title: 'Juice Search Results', results: theJuices });
     }
     catch (err) {
         res.status(500);
@@ -33,9 +33,26 @@ exports.juice_detail = function (req, res) {
     res.send('NOT IMPLEMENTED: Juice detail: ' + req.params.id);
 };
 // Handle Costume create on POST.
-exports.juice_create_post = function (req, res) {
-    res.send('NOT IMPLEMENTED: Juice create POST');
-};
+// Handle Costume create on POST.
+exports.juice_create_post = async function(req, res) {
+    console.log(req.body)
+    let document = new Juice();
+   
+    document.variety = req.body.variety;
+    document.vitamin = req.body.vitamin;
+    document.price = req.body.price;
+    
+    try{
+    let result = await document.save();
+    res.send(result);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
+
+
 // Handle Costume delete form on DELETE.
 exports.juice_delete = function (req, res) {
     res.send('NOT IMPLEMENTED: Juice delete DELETE ' + req.params.id);
