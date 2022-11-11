@@ -60,11 +60,27 @@ exports.juice_create_post = async function(req, res) {
     };
 
 
-// Handle Costume delete form on DELETE.
+// Handle Juice delete form on DELETE.
 exports.juice_delete = function (req, res) {
     res.send('NOT IMPLEMENTED: Juice delete DELETE ' + req.params.id);
 };
-// Handle Costume update form on PUT.
-exports.juice_update_put = function (req, res) {
-    res.send('NOT IMPLEMENTED: Juice update PUT' + req.params.id);
-};
+// Handle Juice update form on PUT.
+exports.juice_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body
+    ${JSON.stringify(req.body)}`)
+    try {
+    let toUpdate = await Juice.findById( req.params.id)
+    // Do updates of properties
+    if(req.body.variety)
+    toUpdate.variety = req.body.variety;
+    if(req.body.vitamin) toUpdate.vitamin = req.body.vitamin;
+    if(req.body.price) toUpdate.price = req.body.price;
+    let result = await toUpdate.save();
+    console.log("Sucess " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": ${err}: Update for id ${req.params.id}
+    failed`);
+    }
+    };
