@@ -61,8 +61,17 @@ exports.juice_create_post = async function(req, res) {
 
 
 // Handle Juice delete form on DELETE.
-exports.juice_delete = function (req, res) {
-    res.send('NOT IMPLEMENTED: Juice delete DELETE ' + req.params.id);
+
+exports.juice_delete = async function(req, res) {
+ console.log("delete " + req.params.id)
+ try {
+ result = await Juice.findByIdAndDelete( req.params.id)
+ console.log("Removed " + result)
+ res.send(result)
+ } catch (err) {
+ res.status(500)
+ res.send(`{"error": Error deleting ${err}}`);
+ }
 };
 // Handle Juice update form on PUT.
 exports.juice_update_put = async function(req, res) {
