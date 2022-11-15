@@ -24,4 +24,9 @@ router.get('/juices/:id', juice_controller.juice_detail);
 // GET request for list of all Juice items.
 router.get('/juices', juice_controller.juice_list);
 // router.get('/', juice_controlers.juice_view_all_Page );
+
+
+/* GET detail juice page */
+router.get('/detail', juice_controller.juice_view_one_Page);
+
 module.exports = router;

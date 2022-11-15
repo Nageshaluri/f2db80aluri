@@ -20,7 +20,7 @@ var juiceRouter = require('./routes/juice');
 var gridbuildRouter = require('./routes/gridbuild');
 var selectorRouter = require('./routes/selector');
 var resourceRouter = require('./routes/resource');
-// var juiceConRouter = require('./controllers/juice');
+
 
 
 var app = express();
@@ -43,7 +43,7 @@ app.use('/juice', juiceRouter);
 app.use('/gridbuild', gridbuildRouter);
 app.use('/selector', selectorRouter);
 app.use('/resource', resourceRouter);
-// app.use('/juices', juiceConRouter);
+
 
 
 // catch 404 and forward to error handler

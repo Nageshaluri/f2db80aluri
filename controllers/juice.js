@@ -93,3 +93,19 @@ exports.juice_update_put = async function(req, res) {
     failed`);
     }
     };
+
+    // Handle a show one view with id specified by query
+exports.juice_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await Juice.findById( req.query.id)
+    res.render('juicedetail', { title: 'Juice Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+
+
+
