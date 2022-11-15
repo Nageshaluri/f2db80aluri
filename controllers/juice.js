@@ -121,4 +121,18 @@ exports.juice_create_Page = function(req, res) {
     }
  };
 
+ // Handle building the view for updating a juice.
+// query provides the id
+exports.juice_update_Page = async function(req, res) {
+    console.log("update view for item "+req.query.id)
+    try{
+    let result = await Juice.findById(req.query.id)
+    res.render('juiceupdate', { title: 'Juice Update', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+
 

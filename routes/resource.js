@@ -32,4 +32,9 @@ router.get('/detail', juice_controller.juice_view_one_Page);
 /* GET create juice page */
 router.get('/create', juice_controller.juice_create_Page);
 
+/* GET create update page */
+router.get('/update', juice_controller.juice_update_Page);
+
+
+
 module.exports = router;

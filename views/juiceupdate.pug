@@ -1,0 +1,42 @@
+extends layout 
+ 
+block content 
+  h1= title 
+  - let id = toShow.id
+  - let variety = toShow.variety
+  - let vitamin = toShow.vitamin
+  - let price = toShow.price
+ 
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{id} 
+  - let actionid = "/resource/juice/" + id
+  form(id='juiceForm', action=actionid, method="PUT") 
+    div.form-group 
+        label.juiceAttr(for='variety') Juice variety 
+        input#variety(type='text', name='variety', value=`${variety}`) 
+    div.form-group 
+        label.juiceAttr(for='vitamin') Juice vitamin 
+        input#vitamin(type='text', name='vitamin', step='any', value=`${vitamin}`) 
+    div.form-group 
+        label.juiceAttr(for='price') Main Ingredient
+        input#mainIngredient(type='number', name='price', value=`${price}`) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['juiceForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Save succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Save failed " + error ) 
+      }); 
+    }); 
