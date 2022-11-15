@@ -29,4 +29,7 @@ router.get('/juices', juice_controller.juice_list);
 /* GET detail juice page */
 router.get('/detail', juice_controller.juice_view_one_Page);
 
+/* GET create juice page */
+router.get('/create', juice_controller.juice_create_Page);
+
 module.exports = router;
