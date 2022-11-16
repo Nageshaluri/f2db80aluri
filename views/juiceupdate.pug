@@ -10,17 +10,17 @@ block content
   div.row(class='mb-2') 
     div.mr-1 ID is 
     div #{id} 
-  - let actionid = "/resource/juice/" + id
+  - let actionid = "/resource/juices/" + id
   form(id='juiceForm', action=actionid, method="PUT") 
     div.form-group 
         label.juiceAttr(for='variety') Juice variety 
-        input#variety(type='text', name='variety', value=`${variety}`) 
+        input#variety(type='text', name='variety', value=variety) 
     div.form-group 
         label.juiceAttr(for='vitamin') Juice vitamin 
-        input#vitamin(type='text', name='vitamin', step='any', value=`${vitamin}`) 
+        input#vitamin(type='text', name='vitamin',value=vitamin) 
     div.form-group 
-        label.juiceAttr(for='price') Main Ingredient
-        input#mainIngredient(type='number', name='price', value=`${price}`) 
+        label.juiceAttr(for='price') Main price
+        input#price(type='number', name='price', value=price) 
     input(type="submit") 
  
   script. 
@@ -31,7 +31,7 @@ block content
         method: 'PUT', 
         body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
       }).then((resp) => { 
-        return resp.json(); // or resp.text() or whatever the server sends 
+        return resp.json();  // resp.json();  or whatever the server sends 
       }).then((body) => { 
         alert("Save succeded") 
         // TODO handle body 
