@@ -2,6 +2,10 @@ extends layout
 
 block content
   h1= title
+
+  if (toShow == null) 
+    h2 No instance detail 
+  else 
   - let id = toShow.id
   - let variety = toShow.variety
   - let vitamin = toShow.vitamin

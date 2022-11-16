@@ -2,6 +2,10 @@ extends layout
  
 block content 
   h1= title 
+
+  if (toShow == null) 
+    h2 No instance to update 
+  else 
   - let id = toShow.id
   - let variety = toShow.variety
   - let vitamin = toShow.vitamin
@@ -19,7 +23,7 @@ block content
         label.juiceAttr(for='vitamin') Juice vitamin 
         input#vitamin(type='text', name='vitamin',value=vitamin) 
     div.form-group 
-        label.juiceAttr(for='price') Main price
+        label.juiceAttr(for='price') Juice price
         input#price(type='number', name='price', value=price) 
     input(type="submit") 
  
