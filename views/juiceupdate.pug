@@ -6,41 +6,41 @@ block content
   if (toShow == null) 
     h2 No instance to update 
   else 
-  - let id = toShow.id
-  - let variety = toShow.variety
-  - let vitamin = toShow.vitamin
-  - let price = toShow.price
+   - let id = toShow.id
+   - let variety = toShow.variety
+   - let vitamin = toShow.vitamin
+   - let price = toShow.price
  
-  div.row(class='mb-2') 
-    div.mr-1 ID is 
-    div #{id} 
-  - let actionid = "/resource/juices/" + id
-  form(id='juiceForm', action=actionid, method="PUT") 
-    div.form-group 
-        label.juiceAttr(for='variety') Juice variety 
-        input#variety(type='text', name='variety', value=variety) 
-    div.form-group 
-        label.juiceAttr(for='vitamin') Juice vitamin 
-        input#vitamin(type='text', name='vitamin',value=vitamin) 
-    div.form-group 
-        label.juiceAttr(for='price') Juice price
-        input#price(type='number', name='price', value=price) 
-    input(type="submit") 
+   div.row(class='mb-2') 
+     div.mr-1 ID is 
+     div #{id} 
+   - let actionid = "/resource/juices/" + id
+   form(id='juiceForm', action=actionid, method="PUT") 
+     div.form-group 
+         label.juiceAttr(for='variety') Juice variety 
+         input#variety(type='text', name='variety', value=variety) 
+     div.form-group 
+         label.juiceAttr(for='vitamin') Juice vitamin 
+         input#vitamin(type='text', name='vitamin',value=vitamin) 
+     div.form-group 
+         label.juiceAttr(for='price') Juice price
+         input#price(type='number', name='price', value=price) 
+     input(type="submit") 
  
-  script. 
-    document.forms['juiceForm'].addEventListener('submit', (event) => { 
-      event.preventDefault(); 
-      // TODO do something here to show user that form is being submitted 
-      fetch(event.target.action, { 
-        method: 'PUT', 
+   script. 
+     document.forms['juiceForm'].addEventListener('submit', (event) => { 
+       event.preventDefault(); 
+       // TODO do something here to show user that form is being submitted 
+       fetch(event.target.action, { 
+         method: 'PUT', 
         body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
-      }).then((resp) => { 
-        return resp.json();  // resp.json();  or whatever the server sends 
-      }).then((body) => { 
-        alert("Save succeded") 
-        // TODO handle body 
-      }).catch((error) => { 
+       }).then((resp) => { 
+         return resp.json();  // resp.json();  or whatever the server sends 
+       }).then((body) => { 
+         alert("Update succeded") 
+         // TODO handle body 
+       }).catch((error) => { 
         // TODO handle error 
-        alert("Save failed " + error ) 
-      }); 
-    }); 
+         alert("Update failed " + error ) 
+       }); 
+     }); 
