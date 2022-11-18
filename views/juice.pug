@@ -7,7 +7,7 @@ block content
    div(class="row m-1")
     each item,index in juices
      - let destination = `dispatch(\"/juice/update?id=${item._id}\")`
-     div(class="col-sm-2",class="m-1") Item #{item.variety}(#{item.vitamin}) is #{item.price}
+     div(class="row-sm-2",class="m-1") Item #{item.variety}(#{item.vitamin}) is #{item.price}
       button.btn( class="btn-primary ml-1", onclick= destination) Update
   script.
    function dispatch(path){
