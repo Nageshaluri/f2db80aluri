@@ -1,19 +1,13 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to web pages Nagesh Aluri #{title}
-  button(type="button", class="btn btn-secondary", onClick="doBump()") Press Me
-  p
-  div(id="Bump") Bump the count
-  p
-  a(href="juice") juice
-  script.
-    var count=0
-    var bump=1
-    function doBump() {
-      count +=bump
-      bump=bump+1
-      document.getElementById('Bump').innerHTML = `Count ${count} with bump ${bump}` 
-    }
+ if (!user)
+  a(href="/login") Login
+  br
+  a(href="/register") Register
+ if (user)
+  p You are currently logged in as #{user.username}
+  a(href="/juice") Take me to Juices
+  br
+  a(href="/logout") Logout
 

@@ -24,19 +24,4 @@ router.get('/juices/:id', juice_controller.juice_detail);
 // GET request for list of all Juice items.
 router.get('/juices', juice_controller.juice_list);
 // router.get('/', juice_controlers.juice_view_all_Page );
-
-
-
-
-// /* GET create juice page */
-// router.get('/create', juice_controller.juice_create_Page);
-
-// /* GET create update page */
-// router.get('/update', juice_controller.juice_update_Page);
-
-// /* GET delete juice page */
-// router.get('/delete', juice_controller.juice_delete_Page);
-
-
-
 module.exports = router;
