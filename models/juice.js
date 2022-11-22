@@ -7,7 +7,10 @@ variety:{
     type: String,
     minLength: 5
 }, 
-vitamin: String,
+vitamin:{
+    type: String,
+    maxLength: 4
+},
 
 price: Number
 })
