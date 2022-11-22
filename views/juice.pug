@@ -1,14 +1,24 @@
 extends layout
 
 block content
+  -let create = `dispatch(\"juice/create\")`
+  button.btn(class="btn-success m1-1", onclick=create) Create
   h1= title
   - let juices = results
   div(claass="container-fluid")
    div(class="row m-1")
     each item,index in juices
      - let destination = `dispatch(\"/juice/update?id=${item._id}\")`
+     - let detail = `dispatch(\"/juice/detail?id=${item._id}\")`
+     - let del = `dispatch(\"/juice/delete?id=${item._id}\")`
      div(class="row-sm-2",class="m-1") Item #{item.variety}(#{item.vitamin}) is #{item.price}
       button.btn( class="btn-primary ml-1", onclick= destination) Update
+      button.btn( class="btn-warning ml-1", onclick= detail) Detail
+      button.btn( class="btn-danger ml-1", onclick= del) Delete
+  script.
+   function buy(value) {
+    alert(`You purchased item ${value}`)
+   }
   script.
    function dispatch(path){
     window.location.href=path
